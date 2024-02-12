@@ -41,7 +41,7 @@ module "jenkins-controller" {
   instance_type           = "t2.medium"
   ami                     = "ami-0c7217cdde317cfec"
   jenkins_server_sgid     = [module.security_groups.jenkins-sg_id]
-  jenkins_server_subnetid = module.vpc.public_subnets[0].id
+  jenkins_server_subnetid = module.vpc.public_subnets[0]
 }
 
 # Create Jenkins-agents
