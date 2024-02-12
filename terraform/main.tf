@@ -37,7 +37,7 @@ module "vpc" {
 
 # Create jenkins Controller
 module "jenkins-controller" {
-  source = "./modules/jenkins-controler"
+  source = "./modules/jenkins-controller"
 
   instance_type = "t2.medium"
   ami = "ami-0c7217cdde317cfec"
@@ -54,7 +54,7 @@ security_group_id = [module.security_groups.aws_security_group.jenkins-sg.id]
 }
 
 module "security_groups" {
-  source = "./modules/security_groups"
+  source = "./modules/security-groups"
 
   vpc_id = module.vpc.vpc_id
 }
