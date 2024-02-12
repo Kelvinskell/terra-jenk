@@ -45,6 +45,6 @@ resource "aws_autoscaling_group" "asg" {
   }
 
   lifecycle {
-    replace_triggered_by = [aws_instance.jenkins-server]
+    replace_triggered_by = [aws_launch_template.jenkins-agents-lt]
   }
 }

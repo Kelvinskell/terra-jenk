@@ -46,6 +46,7 @@ module "jenkins-controller" {
 
   instance_type = "t2.medium"
   ami = "ami-0c7217cdde317cfec"
+  jenkins_server_sgid =  [module.security_groups.jenkins-sg_id]
 }
 
 # Create Jenkins-agents
@@ -55,9 +56,9 @@ source = "./modules/jenkins-agents"
 efs_sg_subnet_a = module.vpc.private_subnets[0]
 efs_sg_subnet_b = module.vpc.private_subnets[1]
 efs_sg_subnet_c = module.vpc.private_subnets[2]
-efs_mount_sg = module.security_groups.jenkins-sg_id
+efs_mount_sg = [module.security_groups.jenkins-sg_id]
 image_id = "ami-0c7217cdde317cfec"
 instance_type = "t2.micro"
 vpc_zone_identifier = flatten([module.vpc.public_subnets[*]])
-security_group_id = module.security_groups.Allow_NFS_id
+security_group_id = [module.security_groups.Allow_NFS_id]
 }

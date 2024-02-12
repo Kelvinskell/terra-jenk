@@ -6,7 +6,7 @@ data "template_file" "user_data1" {
 resource "aws_instance" "jenkins-server" {
     ami = var.ami
     instance_type = var.instance_type
-    vpc_security_group_ids = [aws_security_group.jenkins-sg.id]
+    vpc_security_group_ids = var.jenkins_server_sgid
     user_data = data.template_file.user_data1.rendered
 
     tags = {
