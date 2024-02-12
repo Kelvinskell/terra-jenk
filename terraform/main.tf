@@ -1,3 +1,19 @@
+# Provider Configurations
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">=5.20.0"
+    }
+  }
+}
+
+provider "aws" {
+  region  = "us-east-1"
+  profile = "default"
+}
+
+
 # Create A VPC
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
@@ -21,9 +37,24 @@ module "vpc" {
 
 # Create jenkins Controller
 module "jenkins-controller" {
-  source = "./modules/"
+  source = "./modules/jenkins-controler"
 
   instance_type = "t2.medium"
-  jc-ami = "ami-0c7217cdde317cfec"
+  ami = "ami-0c7217cdde317cfec"
+}
+
+# Create Jenkins-agents
+module "jenkins-agents" {
+source = "./modules/jenkins-agents"
+
+image_id = "ami-0c7217cdde317cfec"
+instance_type = "t2.micro"
+vpc_zone_identifier = flatten([module.vpc.public_subnets[*]])
+security_group_id = [module.security_groups.aws_security_group.jenkins-sg.id]
+}
+
+module "security_groups" {
+  source = "./modules/security_groups"
+
   vpc_id = module.vpc.vpc_id
 }

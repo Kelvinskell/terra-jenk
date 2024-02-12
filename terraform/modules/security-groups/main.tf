@@ -23,3 +23,30 @@ resource "aws_security_group" "jenkins-sg" {
   }
 
 }
+
+# Create security group for EFS
+resource "aws_security_group" "Allow_NFS" {
+  name        = "jenkins-agents-efs-sg"
+  description = "Allow NFS"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    description     = "NFS"
+    from_port       = 2049
+    to_port         = 2049
+    protocol        = "tcp"
+    security_groups = [aws_security_group.jenkins-sg.id]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name        = "jenkins-agents-efs-sg",
+    Environment = "prod"
+  }
+}

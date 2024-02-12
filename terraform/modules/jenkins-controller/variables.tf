@@ -1,11 +1,7 @@
-variable "jc-ami" {
+variable "ami" {
   type = string
 }
 
 variable "instance_type" {
-  type = string
-}
-
-variable "vpc_id" {
   type = string
 }
