@@ -12,7 +12,7 @@ resource "aws_launch_template" "jenkins-agents-lt" {
   ebs_optimized = false
   image_id      = var.image_id
   instance_type = var.instance_type
-  
+
 
   network_interfaces {
     security_groups             = var.security_group_id

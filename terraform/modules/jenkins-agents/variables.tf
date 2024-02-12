@@ -7,15 +7,15 @@ variable "instance_type" {
 }
 
 variable "security_group_id" {
-  type = list
+  type = list(any)
 }
 
 variable "vpc_zone_identifier" {
-  type = list
+  type = list(any)
 }
 
 variable "efs_mount_sg" {
-    type = list
+  type = list(any)
 }
 
 variable "efs_sg_subnet_a" {

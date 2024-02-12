@@ -31,7 +31,7 @@ resource "aws_efs_mount_target" "mount2" {
 
 resource "aws_efs_mount_target" "mount3" {
   file_system_id  = aws_efs_file_system.efs.id
-  subnet_id       = var.efs_sg_subnet_c 
+  subnet_id       = var.efs_sg_subnet_c
   security_groups = var.efs_mount_sg
 }
 

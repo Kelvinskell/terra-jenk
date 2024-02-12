@@ -1,4 +1,4 @@
- # Create scaling policy
+# Create scaling policy
 resource "aws_autoscaling_policy" "asg-policy" {
   autoscaling_group_name = aws_autoscaling_group.asg.name
   name                   = "jenkins-agents-asg-policy"

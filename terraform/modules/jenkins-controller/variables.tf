@@ -7,7 +7,7 @@ variable "instance_type" {
 }
 
 variable "jenkins_server_sgid" {
-  type = list
+  type = list(any)
 }
 
 variable "jenkins_server_subnetid" {
