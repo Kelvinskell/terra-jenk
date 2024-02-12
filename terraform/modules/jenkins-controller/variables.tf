@@ -9,3 +9,7 @@ variable "instance_type" {
 variable "jenkins_server_sgid" {
   type = list
 }
+
+variable "jenkins_server_subnetid" {
+  type = string
+}

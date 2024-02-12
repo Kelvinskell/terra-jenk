@@ -34,12 +34,6 @@ module "vpc" {
   }
 }
 
-module "security_groups" {
-  source = "./modules/security-groups"
-
-  vpc_id = module.vpc.vpc_id
-}
-
 # Create jenkins Controller
 module "jenkins-controller" {
   source = "./modules/jenkins-controller"
@@ -47,6 +41,7 @@ module "jenkins-controller" {
   instance_type = "t2.medium"
   ami = "ami-0c7217cdde317cfec"
   jenkins_server_sgid =  [module.security_groups.jenkins-sg_id]
+  jenkins_server_subnetid = module.vpc.public_subnets[0].id
 }
 
 # Create Jenkins-agents
@@ -61,4 +56,10 @@ image_id = "ami-0c7217cdde317cfec"
 instance_type = "t2.micro"
 vpc_zone_identifier = flatten([module.vpc.public_subnets[*]])
 security_group_id = [module.security_groups.Allow_NFS_id]
+}
+
+module "security_groups" {
+  source = "./modules/security-groups"
+
+  vpc_id = module.vpc.vpc_id
 }
