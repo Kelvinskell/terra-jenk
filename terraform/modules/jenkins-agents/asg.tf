@@ -19,7 +19,7 @@ resource "aws_autoscaling_policy" "asg-policy" {
 resource "aws_autoscaling_group" "asg" {
   name                      = "jenkins-agents-asg"
   max_size                  = 6
-  min_size                  = 2
+  min_size                  = 1
   desired_capacity          = 4
   health_check_grace_period = 480
   health_check_type         = "ELB"
