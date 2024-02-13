@@ -90,3 +90,4 @@ resource "aws_iam_role" "server_role" {
 }
     )
   }
+}
