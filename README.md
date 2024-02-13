@@ -7,4 +7,4 @@ Below is the reference architecture:
 
 Ansible and packer will not be used in this project however, as terraform wil be used to provision all the cloud resources needed for this project.
 
-To learn more about this project, visit [here]()
+To learn more about this project, visit this [link](https://dev.to/kelvinskell/how-to-configure-dynamic-build-agents-in-jenkins-using-aws-and-terraform-3dlb)
