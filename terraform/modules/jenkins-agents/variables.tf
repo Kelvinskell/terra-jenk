@@ -27,3 +27,7 @@ variable "efs_sg_subnet_b" {
 variable "efs_sg_subnet_c" {
   type = string
 }
+
+variable "instance_profile" {
+  type = string
+}

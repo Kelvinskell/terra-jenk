@@ -21,6 +21,10 @@ resource "aws_launch_template" "jenkins-agents-lt" {
     delete_on_termination       = true
   }
 
+  iam_instance_profile {
+    name = var.instance_profile
+  }
+
   user_data = filebase64("./userdata.sh")
   tag_specifications {
     resource_type = "instance"

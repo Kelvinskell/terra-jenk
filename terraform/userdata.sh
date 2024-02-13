@@ -25,3 +25,8 @@ fsname=$(aws efs describe-file-systems --region us-east-1 --creation-token jenki
 mount -t efs $fsname /var/lib/jenkins/efs
 chown jenkins:jenkins /var/lib/jenkins/efs
 
+# Attach private key to jenkins HOME
+mkdir /var/lib/jenkins/.ssh
+cp /home/ubuntu/.ssh/authorized_keys /var/lib/jenkins/.ssh/authorized_keys
+chmod 600 /var/lib/jenkins/.ssh/authorized_keys
+chown -R jenkins:jenkins /var/lib/jenkins/.ssh

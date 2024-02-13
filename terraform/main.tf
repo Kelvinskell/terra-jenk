@@ -54,6 +54,7 @@ module "jenkins-agents" {
   efs_mount_sg        = [module.security_groups.Allow_NFS_id]
   image_id            = "ami-0c7217cdde317cfec"
   instance_type       = "t2.micro"
+  instance_profile = module.jenkins-controller.instance_profile
   vpc_zone_identifier = flatten([module.vpc.private_subnets[*]])
   security_group_id   = [module.security_groups.jenkins-sg_id]
 }
