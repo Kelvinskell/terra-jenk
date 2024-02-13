@@ -21,8 +21,6 @@ resource "aws_autoscaling_group" "asg" {
   max_size                  = 6
   min_size                  = 1
   desired_capacity          = 4
-  health_check_grace_period = 480
-  health_check_type         = "ELB"
   force_delete              = false
   termination_policies      = ["ClosestToNextInstanceHour", "Default"]
   launch_template {
