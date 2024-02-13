@@ -1,6 +1,6 @@
 # Use data source to invoke user data
 data "template_file" "user_data1" {
-  template = file("./jenkins-install.sh")
+  template = file("./userdata.sh")
 }
 
 resource "aws_instance" "jenkins-server" {
