@@ -8,7 +8,7 @@ resource "aws_instance" "jenkins-server" {
   instance_type          = var.instance_type
   subnet_id              = var.jenkins_server_subnetid
   vpc_security_group_ids = var.jenkins_server_sgid
-  #associate_public_ip_address = true
+  associate_public_ip_address = true
   iam_instance_profile = aws_iam_instance_profile.server_profile.name
   user_data              = data.template_file.user_data1.rendered
 
