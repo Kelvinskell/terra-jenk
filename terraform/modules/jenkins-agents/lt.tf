@@ -12,6 +12,7 @@ resource "aws_launch_template" "jenkins-agents-lt" {
   ebs_optimized = false
   image_id      = var.image_id
   instance_type = var.instance_type
+  key_name      = aws_key_pair.security_key.key_name
 
 
   network_interfaces {

@@ -36,18 +36,11 @@ resource "aws_iam_role" "server_role" {
     {
       "Effect": "Allow",
       "Action": [
-        "ec2:DescribeSpotFleetInstances",
+        "ec2:Describe*",
         "ec2:ModifySpotFleetRequest",
         "ec2:CreateTags",
-        "ec2:DescribeRegions",
-        "ec2:DescribeInstances",
         "ec2:TerminateInstances",
-        "ec2:DescribeInstanceStatus",
-        "ec2:DescribeSpotFleetRequests",
-        "ec2:DescribeFleets",
-        "ec2:DescribeFleetInstances",
         "ec2:ModifyFleet",
-        "ec2:DescribeInstanceTypes"
       ],
       "Resource": "*"
     },
